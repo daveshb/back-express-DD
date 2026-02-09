@@ -17,11 +17,49 @@ app.get('/users', async (req, res) => {
   })
 })
 
-app.post('/users', (req, res) => {
-  res.json({
-    messgee: "Este es un post "
-  })
-})
+app.post("/users/login", express.json(), async (req, res) => {
+  await dbConnection();
+
+  const { cc, password } = req.body;
+
+  if (!cc || !password) {
+    return res.status(400).json({
+      ok: false,
+      message: "CC y contraseña son requeridos",
+    });
+  }
+
+  try {
+    const user = await Users.findOne({ cc });
+
+    if (!user) {
+      return res.status(401).json({
+        ok: false,
+        message: "CC o contraseña incorrectos",
+      });
+    }
+
+    if (user.password !== password) {
+      return res.status(401).json({
+        ok: false,
+        message: "CC o contraseña incorrectos",
+      });
+    }
+
+    res.status(200).json({
+      ok: true,
+      message: "Login exitoso",
+      user,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      ok: false,
+      message: "Error en el login",
+      error: error.message,
+    });
+  }
+});
 
 
 
