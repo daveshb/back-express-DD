@@ -71,8 +71,6 @@ app.put('/users', async (req, res) => {
 
 //  const { cedula } = req.params
 
-//  console.log(cedula)
-
 
 //  const usuarioActualizado = await Usuario.findOneAndUpdate(
 //   { nombre: "Juan" },          // 1. Filtro (busca el documento)
@@ -85,7 +83,7 @@ app.put('/users', async (req, res) => {
 //  )
 
   res.json({
-    messgee: "El put funciona ",
+    messgee: "El put funciona",
   })
 })
 
