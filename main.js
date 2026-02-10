@@ -64,6 +64,32 @@ app.post("/users/login", express.json(), async (req, res) => {
 });
 
 
+app.put('/users', async (req, res) => {
+
+  // aqui puede llamar ottas DBs
+//  await dbConnection()
+
+//  const { cedula } = req.params
+
+//  console.log(cedula)
+
+
+//  const usuarioActualizado = await Usuario.findOneAndUpdate(
+//   { nombre: "Juan" },          // 1. Filtro (busca el documento)
+//   { $set: { edad: 32 } },      // 2. Actualización (aplica cambios)
+//   { new: true }                // 3. Opción: devuelve el doc. actualizado
+// );
+
+//  const users = await Users.findOneAndUpdate(
+//   {cc: cedula}
+//  )
+
+  res.json({
+    messgee: "El put funciona ",
+  })
+})
+
+
 
 
 app.listen(3000, () => {
