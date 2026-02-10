@@ -1,8 +1,10 @@
 import express from 'express'
 import { dbConnection } from './lib/database.js'
 import Users from './models/users.js'
+import cors from "cors"
 
 const app = express()
+app.use(cors());
 
 app.get('/users', async (req, res) => {
 
